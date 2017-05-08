@@ -31,6 +31,16 @@ if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
   }
 }
 
+var mongoUser =  process.env.MONGODB_USER;
+    mongoDatabase = process.env.MONGODB_DATABASE;
+    mongoPassword = process.env.MONGODB_PASSWORD;
+    mongoHost = process.env.TAXCALCDB_SERVICE_HOST;
+    mongoPort = process.env.TAXCALCDB_SERVICE_PORT;
+    mongoURL = 'mongodb://';
+    
+mongoURL += mongoUser + ':' + mongoPassword + '@';
+mongoURL += mongoHost + ':' +  mongoPort + '/' + mongoDatabase;
+
 mongoose.connect(mongoURL);
 
 var Transaction = require('./models/transaction');
