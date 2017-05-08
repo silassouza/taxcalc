@@ -37,7 +37,7 @@ var mongoUser =  process.env.MONGODB_USER;
     mongoHost = process.env.TAXCALCDB_SERVICE_HOST;
     mongoPort = process.env.TAXCALCDB_SERVICE_PORT;
     mongoURL = 'mongodb://';
-    
+
 mongoURL += mongoUser + ':' + mongoPassword + '@';
 mongoURL += mongoHost + ':' +  mongoPort + '/' + mongoDatabase;
 
@@ -70,7 +70,9 @@ app.use('/api', route);
 // Start defining routes for our app/microservice
 
 route.get('/', function(req, res) {
-    res.json({ message: 'hooray! welcome to our api!' });
+    res.json({
+      status: 'up' 
+    });
 });
 
 app.listen(port, ip);
