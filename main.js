@@ -44,15 +44,30 @@ route.route('/calculate')
         var tx = new Transaction();
         tx.id = req.body.id;
         tx.amount = req.body.amount;
+
+        // Assume a 30% tax on all orders
         var finalAmount = tx.amount + (tx.amount * .3);
 
         tx.save(function(e) {
             if (e)
-                res.send(e);
+                res.send('ERROR: '+ e);
 
-            res.json({ finalAmount: finalAmount });
+            res.json({ message: 'OK',
+                      finalAmount: finalAmount
+            });
         });
 
+    });
+
+// This route dumps all transactions
+route.route('/list')
+     .get(function(req, res) {
+       Transaction.find(function(err, txs) {
+        if (err)
+          res.send(err);
+
+        res.json(txs);
+       });
     });
 
 app.listen(port, ip);
