@@ -34,7 +34,7 @@ app.use('/api', route);
 
 // A route that dumps hostname information from pod
 route.get('/', function(req, res) {
-    res.send('Hi! I am running on host -> ' + hostname);
+    res.send('Hi! I am running on host -> ' + hostname + '\n');
 });
 
 // This route handles tax calculation for our service
