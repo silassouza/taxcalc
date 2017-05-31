@@ -42,7 +42,7 @@ route.route('/calculate')
      .post(function(req, res) {
 
         var tx = new Transaction();
-        tx.id = req.body.id;
+        tx.tx_id = req.body.id;
         tx.amount = req.body.amount;
 
         // Assume a 30% tax on all orders
