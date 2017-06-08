@@ -46,7 +46,7 @@ route.route('/calculate')
         tx.amount = req.body.amount;
 
         // Assume a 30% tax on all orders
-        var finalAmount = tx.amount + (tx.amount * .3);
+        var finalAmount = tx.amount + (tx.amount * .2);
 
         tx.save(function(e) {
             if (e)
